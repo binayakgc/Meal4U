@@ -167,7 +167,9 @@ class _CategorySection extends StatelessWidget {
         children: [
           Row(
             children: [
-              Text(category.title, style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 15)),
+              Flexible(
+                child: Text(category.title, style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 15)),
+              ),
               SpeakerIcon(onTap: onSpeak),
             ],
           ),
