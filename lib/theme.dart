@@ -27,18 +27,16 @@ class AppColors {
 }
 
 /// A meal item's thumbnail: shows a real bundled photo when one is given,
-/// otherwise falls back to a coloured gradient + emoji tile.
+/// otherwise falls back to a coloured gradient tile with a plain icon.
 class MealThumb extends StatelessWidget {
   const MealThumb({
     super.key,
-    required this.emoji,
     required this.colors,
     this.imageAsset,
     this.size = 64,
     this.radius = 14,
   });
 
-  final String emoji;
   final List<Color> colors;
   final String? imageAsset;
   final double size;
@@ -62,7 +60,7 @@ class MealThumb extends StatelessWidget {
                   ),
                 ),
                 alignment: Alignment.center,
-                child: Text(emoji, style: TextStyle(fontSize: size * 0.42)),
+                child: Icon(Icons.restaurant_rounded, color: Colors.white, size: size * 0.4),
               ),
       ),
     );

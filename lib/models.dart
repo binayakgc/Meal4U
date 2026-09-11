@@ -19,14 +19,12 @@ enum MealStatus { served, current, noSelection }
 class FoodItem {
   const FoodItem({
     required this.name,
-    required this.emoji,
     required this.colors,
     this.imageAsset,
     this.warning,
   });
 
   final String name;
-  final String emoji;
   final List<Color> colors;
   final String? imageAsset;
 

@@ -7,58 +7,49 @@ class Foods {
 
   static const roastChicken = FoodItem(
     name: 'Roast chicken',
-    emoji: '🍗',
     colors: [Color(0xFFE7B27B), Color(0xFFC97B4A)],
     imageAsset: 'assets/images/roast_chicken.jpg',
   );
   static const bakedFish = FoodItem(
     name: 'Baked fish',
-    emoji: '🐟',
     colors: [Color(0xFF7FBFA0), Color(0xFF3E8F72)],
     imageAsset: 'assets/images/baked_fish.jpg',
   );
   static const vegCurry = FoodItem(
     name: 'Veg curry',
-    emoji: '🍛',
     colors: [Color(0xFFE7C36B), Color(0xFFC98F3A)],
     imageAsset: 'assets/images/veg_curry.jpg',
   );
 
   static const steamedGreens = FoodItem(
     name: 'Steamed greens',
-    emoji: '🥦',
     colors: [Color(0xFF9BCB8C), Color(0xFF5E9E52)],
     imageAsset: 'assets/images/steamed_greens.jpg',
   );
   static const mashPotato = FoodItem(
     name: 'Mash potato',
-    emoji: '🥔',
     colors: [Color(0xFFEFE3C6), Color(0xFFD8C89B)],
     imageAsset: 'assets/images/mash_potato.jpg',
   );
   static const roastPumpkin = FoodItem(
     name: 'Roast pumpkin',
-    emoji: '🎃',
     colors: [Color(0xFFEFA24B), Color(0xFFCB6E22)],
     imageAsset: 'assets/images/roast_pumpkin.jpg',
   );
 
   static const water = FoodItem(
     name: 'Water',
-    emoji: '💧',
     colors: [Color(0xFFCBE0EE), Color(0xFF9BBFD6)],
     imageAsset: 'assets/images/water.jpg',
   );
   static const appleJuice = FoodItem(
     name: 'Apple juice',
-    emoji: '🧃',
     colors: [Color(0xFF3A2E28), Color(0xFF1E1714)],
     imageAsset: 'assets/images/apple_juice.jpg',
     warning: 'Diabetic',
   );
   static const tea = FoodItem(
     name: 'Tea',
-    emoji: '🍵',
     colors: [Color(0xFFCDBBA0), Color(0xFFA98F6C)],
     imageAsset: 'assets/images/tea.jpg',
   );

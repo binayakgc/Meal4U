@@ -121,7 +121,6 @@ class _MealCard extends StatelessWidget {
         children: [
           if (main != null)
             MealThumb(
-              emoji: main.emoji,
               colors: main.colors,
               imageAsset: main.imageAsset,
             )
@@ -339,7 +338,6 @@ class _MenuRow extends StatelessWidget {
         children: [
           if (main != null)
             MealThumb(
-              emoji: main.emoji,
               colors: main.colors,
               imageAsset: main.imageAsset,
               size: 56,

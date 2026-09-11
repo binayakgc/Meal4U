@@ -213,7 +213,7 @@ class _FoodTile extends StatelessWidget {
                     width: 2,
                   ),
                 ),
-                child: MealThumb(emoji: item.emoji, colors: item.colors, imageAsset: item.imageAsset, size: 88, radius: 12),
+                child: MealThumb(colors: item.colors, imageAsset: item.imageAsset, size: 88, radius: 12),
               ),
               Positioned(
                 right: -2,
