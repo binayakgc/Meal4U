@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../../app_state.dart';
 import '../../models.dart';
 import '../../theme.dart';
+import '../../widgets/speech_simulator.dart';
 import 'voice_listening_screen.dart';
 
 class MealSelectionScreen extends StatelessWidget {
@@ -44,12 +45,19 @@ class MealSelectionScreen extends StatelessWidget {
                   ],
                 ),
               ),
+              const SizedBox(height: 12),
+              OutlinedButton.icon(
+                onPressed: () => _applyRecommendation(context, app, plan),
+                icon: const Icon(Icons.health_and_safety_outlined),
+                label: const Text('Choose for me based on my dietary needs'),
+              ),
               const SizedBox(height: 18),
               for (final category in plan.categories)
                 _CategorySection(
                   category: category,
                   selected: plan.selected[category.title],
                   onSelect: (item) => _handleSelect(context, app, category.title, item),
+                  onSpeak: () => _speakCategory(context, category),
                 ),
               const SizedBox(height: 8),
               SizedBox(
@@ -117,14 +125,38 @@ class MealSelectionScreen extends StatelessWidget {
       app.updateSelection(slot, category, item);
     }
   }
+
+  void _applyRecommendation(BuildContext context, AppState app, MealPlan plan) {
+    for (final category in plan.categories) {
+      final safeItem = category.items.firstWhere(
+        (item) => item.warning == null,
+        orElse: () => category.items.first,
+      );
+      app.updateSelection(slot, category.title, safeItem);
+    }
+    simulateSpeech(context, "I've chosen options that suit your dietary needs.");
+  }
+
+  void _speakCategory(BuildContext context, FoodCategory category) {
+    final names = category.items.map((i) => i.name).toList();
+    final optionsText = names.length <= 1
+        ? names.join()
+        : '${names.sublist(0, names.length - 1).join(', ')} or ${names.last}';
+    simulateSpeech(context, '${category.title}. Would you like $optionsText?');
+  }
 }
 
 class _CategorySection extends StatelessWidget {
-  const _CategorySection({required this.category, required this.selected, required this.onSelect});
+  const _CategorySection({
+    required this.category,
+    required this.selected,
+    required this.onSelect,
+    required this.onSpeak,
+  });
   final FoodCategory category;
   final FoodItem? selected;
   final ValueChanged<FoodItem> onSelect;
-  
+  final VoidCallback onSpeak;
 
   @override
   Widget build(BuildContext context) {
@@ -133,7 +165,12 @@ class _CategorySection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(category.title, style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 15)),
+          Row(
+            children: [
+              Text(category.title, style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 15)),
+              SpeakerIcon(onTap: onSpeak),
+            ],
+          ),
           const SizedBox(height: 10),
           Row(
             children: [
