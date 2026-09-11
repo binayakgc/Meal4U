@@ -9,6 +9,7 @@ class AppColors {
   static const Color ink = Color(0xFF2A2420);
   static const Color subtext = Color(0xFF8A8078);
   static const Color divider = Color(0xFFE9DFCE);
+  static const Color dark = Color(0xFF262220);
 
   static const Color success = Color(0xFF6FA98A);
   static const Color successBg = Color(0xFFDCEEE3);
@@ -22,6 +23,7 @@ class AppColors {
 
   static const Color neutralChipBg = Color(0xFFEDE6D8);
   static const Color neutralChipText = Color(0xFF5B5349);
+  
 }
 
 /// A meal item's thumbnail: shows a real bundled photo when one is given,

@@ -6,6 +6,6 @@ void main() {
   testWidgets('App boots without crashing', (WidgetTester tester) async {
     await tester.pumpWidget(const Meal4UApp());
 
-    expect(find.text('Login screen goes here next'), findsOneWidget);
+    expect(find.text('Welcome back'), findsOneWidget);
   });
 }

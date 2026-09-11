@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'screens/auth/resident_login_screen.dart';
 import 'app_state.dart';
 import 'theme.dart';
 
@@ -22,19 +23,9 @@ class Meal4UApp extends StatelessWidget {
           scaffoldBackgroundColor: AppColors.background,
           colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
         ),
-        home: const _PlaceholderHome(),
+        home: const ResidentLoginScreen(),
       ),
     );
   }
 }
 
-class _PlaceholderHome extends StatelessWidget {
-  const _PlaceholderHome();
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text('Login screen goes here next')),
-    );
-  }
-}
