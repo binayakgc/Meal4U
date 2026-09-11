@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../mock_data.dart';
 import '../../models.dart';
 import '../../theme.dart';
+import '../auth/staff_login_screen.dart';
 import '../resident/meal_selection_screen.dart';
 
 class CarerDashboardScreen extends StatefulWidget {
@@ -19,7 +20,19 @@ class _CarerDashboardScreenState extends State<CarerDashboardScreen> {
     final filtered = residents.where((r) => r.name.toLowerCase().contains(_query.toLowerCase())).toList();
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Residents')),
+      appBar: AppBar(
+        title: const Text('Residents'),
+        actions: [
+          IconButton(
+            onPressed: () => Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (_) => const StaffLoginScreen()),
+              (route) => false,
+            ),
+            icon: const Icon(Icons.logout_rounded),
+            tooltip: 'Log out',
+          ),
+        ],
+      ),
       body: SafeArea(
         top: false,
         child: ListView(

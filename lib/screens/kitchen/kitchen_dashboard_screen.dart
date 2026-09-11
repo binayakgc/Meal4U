@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../theme.dart';
+import '../auth/staff_login_screen.dart';
 
 class KitchenOrder {
   KitchenOrder({required this.name, required this.room, required this.items, required this.tag, this.served = false});
@@ -29,7 +30,19 @@ class _KitchenDashboardScreenState extends State<KitchenDashboardScreen> {
   Widget build(BuildContext context) {
     final servedCount = _orders.where((o) => o.served).length;
     return Scaffold(
-      appBar: AppBar(title: const Text('Kitchen · Lunch service')),
+      appBar: AppBar(
+        title: const Text('Kitchen · Lunch service'),
+        actions: [
+          IconButton(
+            onPressed: () => Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (_) => const StaffLoginScreen()),
+              (route) => false,
+            ),
+            icon: const Icon(Icons.logout_rounded),
+            tooltip: 'Log out',
+          ),
+        ],
+      ),
       body: SafeArea(
         top: false,
         child: ListView(
