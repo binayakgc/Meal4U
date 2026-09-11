@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../app_state.dart';
 import '../../theme.dart';
+import '../carer/carer_dashboard_screen.dart';
 
 class StaffLoginScreen extends StatefulWidget {
   const StaffLoginScreen({super.key});
@@ -23,14 +24,18 @@ class _StaffLoginScreenState extends State<StaffLoginScreen> {
   }
 
   void _login() {
-    context.read<AppState>().staffRole = _role;
-    final label = _role == StaffRole.carer ? 'Carer dashboard' : 'Kitchen dashboard';
+  context.read<AppState>().staffRole = _role;
+  if (_role == StaffRole.carer) {
     Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (_) => Scaffold(body: Center(child: Text('$label goes here next'))),
-      ),
+      MaterialPageRoute(builder: (_) => const CarerDashboardScreen()),
+    );
+  } else {
+    final label = 'Kitchen dashboard';
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (_) => Scaffold(body: Center(child: Text('$label goes here next')))),
     );
   }
+}
 
   @override
   Widget build(BuildContext context) {
