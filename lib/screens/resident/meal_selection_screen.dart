@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../../app_state.dart';
 import '../../models.dart';
 import '../../theme.dart';
+import 'voice_listening_screen.dart';
 
 class MealSelectionScreen extends StatelessWidget {
   const MealSelectionScreen({super.key, required this.slot});
@@ -63,6 +64,29 @@ class MealSelectionScreen extends StatelessWidget {
                   child: const Text('Confirm my selection'),
                 ),
               ),
+              const SizedBox(height: 20),
+              Center(
+                child: Column(
+                  children: [
+                    InkWell(
+                      borderRadius: BorderRadius.circular(30),
+                      onTap: () async {
+                        final result = await Navigator.of(context).push<Map<String, FoodItem>>(
+                          MaterialPageRoute(builder: (_) => const VoiceListeningScreen()),
+                        );
+                        if (result != null) {
+                          for (final entry in result.entries) {
+                            app.updateSelection(slot, entry.key, entry.value);
+                          }
+                        }
+                      },
+                      child: const CircleAvatar(radius: 26, backgroundColor: AppColors.primary, child: Icon(Icons.mic_none_rounded, color: Colors.white)),
+                    ),
+                    const SizedBox(height: 8),
+                    const Text('Tap to talk', style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.w700)),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
@@ -100,6 +124,7 @@ class _CategorySection extends StatelessWidget {
   final FoodCategory category;
   final FoodItem? selected;
   final ValueChanged<FoodItem> onSelect;
+  
 
   @override
   Widget build(BuildContext context) {

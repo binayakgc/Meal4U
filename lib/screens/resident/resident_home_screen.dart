@@ -6,6 +6,7 @@ import '../../models.dart';
 import '../../theme.dart';
 import '../../widgets/bottom_nav.dart';
 import 'meal_selection_screen.dart';
+import '../../widgets/speech_simulator.dart';
 
 /// Shell for the resident app: a persistent bottom nav switching between
 /// the Home dashboard and the Menu day view.
@@ -163,8 +164,7 @@ class _MealCard extends StatelessWidget {
     final text = plan.main != null
         ? '${slot.label}. ${plan.main!.name}.'
         : '${slot.label}. Nothing selected yet.';
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text('🔊 $text')));
+    simulateSpeech(context, text);
   }
 
   Widget _statusTag(MealStatus status) {
