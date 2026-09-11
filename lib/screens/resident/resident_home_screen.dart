@@ -7,6 +7,7 @@ import '../../theme.dart';
 import '../../widgets/bottom_nav.dart';
 import 'meal_selection_screen.dart';
 import '../../widgets/speech_simulator.dart';
+import '../auth/resident_login_screen.dart';
 
 /// Shell for the resident app: a persistent bottom nav switching between
 /// the Home dashboard and the Menu day view.
@@ -56,21 +57,36 @@ class _DashboardTab extends StatelessWidget {
                 bottomRight: Radius.circular(28),
               ),
             ),
-            child: Column(
+            child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  app.residentName,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w800,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        app.residentName,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        app.residentRoom,
+                        style: TextStyle(color: Colors.white.withValues(alpha: 0.85)),
+                      ),
+                    ],
                   ),
                 ),
-                const SizedBox(height: 2),
-                Text(
-                  app.residentRoom,
-                  style: TextStyle(color: Colors.white.withValues(alpha: 0.85)),
+                IconButton(
+                  onPressed: () => Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(builder: (_) => const ResidentLoginScreen()),
+                    (route) => false,
+                  ),
+                  icon: const Icon(Icons.logout_rounded, color: Colors.white),
+                  tooltip: 'Log out',
                 ),
               ],
             ),
