@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../../app_state.dart';
 import '../../theme.dart';
 import '../carer/carer_dashboard_screen.dart';
+import '../kitchen/kitchen_dashboard_screen.dart';
 
 class StaffLoginScreen extends StatefulWidget {
   const StaffLoginScreen({super.key});
@@ -24,18 +26,17 @@ class _StaffLoginScreenState extends State<StaffLoginScreen> {
   }
 
   void _login() {
-  context.read<AppState>().staffRole = _role;
-  if (_role == StaffRole.carer) {
-    Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => const CarerDashboardScreen()),
-    );
-  } else {
-    final label = 'Kitchen dashboard';
-    Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => Scaffold(body: Center(child: Text('$label goes here next')))),
-    );
+    context.read<AppState>().staffRole = _role;
+    if (_role == StaffRole.carer) {
+      Navigator.of(
+        context,
+      ).push(MaterialPageRoute(builder: (_) => const CarerDashboardScreen()));
+    } else {
+      Navigator.of(
+        context,
+      ).push(MaterialPageRoute(builder: (_) => const KitchenDashboardScreen()));
+    }
   }
-}
 
   @override
   Widget build(BuildContext context) {
@@ -49,16 +50,29 @@ class _StaffLoginScreenState extends State<StaffLoginScreen> {
               const SizedBox(height: 24),
               const Text(
                 'Meal4U',
-                style: TextStyle(color: AppColors.primary, fontSize: 26, fontWeight: FontWeight.w800),
+                style: TextStyle(
+                  color: AppColors.primary,
+                  fontSize: 26,
+                  fontWeight: FontWeight.w800,
+                ),
               ),
               const SizedBox(height: 24),
-              const Text('Staff login', style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800)),
+              const Text(
+                'Staff login',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800),
+              ),
               const SizedBox(height: 6),
-              const Text('Sign in to manage meals', style: TextStyle(color: AppColors.subtext)),
+              const Text(
+                'Sign in to manage meals',
+                style: TextStyle(color: AppColors.subtext),
+              ),
               const SizedBox(height: 22),
               Container(
                 padding: const EdgeInsets.all(4),
-                decoration: BoxDecoration(color: AppColors.neutralChipBg, borderRadius: BorderRadius.circular(30)),
+                decoration: BoxDecoration(
+                  color: AppColors.neutralChipBg,
+                  borderRadius: BorderRadius.circular(30),
+                ),
                 child: Row(
                   children: [
                     Expanded(child: _roleSegment('Carer', StaffRole.carer)),
@@ -67,11 +81,17 @@ class _StaffLoginScreenState extends State<StaffLoginScreen> {
                 ),
               ),
               const SizedBox(height: 22),
-              const Text('Staff ID', style: TextStyle(fontWeight: FontWeight.w700)),
+              const Text(
+                'Staff ID',
+                style: TextStyle(fontWeight: FontWeight.w700),
+              ),
               const SizedBox(height: 8),
               TextField(controller: _idController),
               const SizedBox(height: 18),
-              const Text('Password', style: TextStyle(fontWeight: FontWeight.w700)),
+              const Text(
+                'Password',
+                style: TextStyle(fontWeight: FontWeight.w700),
+              ),
               const SizedBox(height: 8),
               TextField(controller: _passwordController, obscureText: true),
               const SizedBox(height: 26),
@@ -80,7 +100,10 @@ class _StaffLoginScreenState extends State<StaffLoginScreen> {
               Center(
                 child: TextButton(
                   onPressed: () => Navigator.of(context).pop(),
-                  child: const Text('Resident? Use resident login', style: TextStyle(color: AppColors.subtext)),
+                  child: const Text(
+                    'Resident? Use resident login',
+                    style: TextStyle(color: AppColors.subtext),
+                  ),
                 ),
               ),
             ],
@@ -104,7 +127,10 @@ class _StaffLoginScreenState extends State<StaffLoginScreen> {
         alignment: Alignment.center,
         child: Text(
           label,
-          style: TextStyle(color: selected ? Colors.white : AppColors.ink, fontWeight: FontWeight.w700),
+          style: TextStyle(
+            color: selected ? Colors.white : AppColors.ink,
+            fontWeight: FontWeight.w700,
+          ),
         ),
       ),
     );
