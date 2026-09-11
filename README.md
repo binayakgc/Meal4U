@@ -13,24 +13,30 @@ memory while the app is running; it resets every time the app restarts.
 - Login with Room ID + PIN, or a simulated "Scan to login" QR badge screen
 - Home dashboard showing the resident's meals for the day (Breakfast, Lunch,
   Dinner) with their current status and a matching action (Details / Change
-  meal / Select now)
+  meal / Select now), plus a logout button
 - Menu day view with Today / Tomorrow / Day after tabs
-- Meal selection screen for picking a Main, Vegetable, and Drink, with a
-  caution dialog when a choice conflicts with the resident's dietary notes
-  (e.g. a diabetic-flagged drink)
+- Meal selection screen for picking a Main, Vegetable, and Drink, with:
+  - a caution dialog when a choice conflicts with the resident's dietary
+    notes (e.g. a diabetic-flagged drink)
+  - a speaker icon per category that reads out the available options
+    (e.g. "Main. Would you like Roast chicken, Baked fish or Veg curry?")
+  - a "Choose for me based on my dietary needs" button that automatically
+    picks a safe option in every category
 - Simulated voice ordering ("Tap to talk")
-- Simulated text-to-speech: a speaker icon next to each meal reads it aloud
-  via an animated caption bubble
+- Simulated text-to-speech: speaker icons read meals and options aloud via
+  an animated caption bubble
 
 ### Carer app
 - Shared staff login (Staff ID + Password) with a Carer/Kitchen toggle
 - Searchable residents list showing dietary flags and an "Assist needed"
   action for residents who can't order for themselves
+- Logout button back to staff login
 
 ### Kitchen app
 - Today's orders for the current meal service
 - A countdown to serving time and order counts
 - A "Mark served" toggle per resident
+- Logout button back to staff login
 
 ## Getting started
 
