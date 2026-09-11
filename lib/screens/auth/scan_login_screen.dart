@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../theme.dart';
+import '../resident/resident_home_screen.dart';
 
 class ScanLoginScreen extends StatefulWidget {
   const ScanLoginScreen({super.key});
@@ -17,9 +18,7 @@ class _ScanLoginScreenState extends State<ScanLoginScreen> {
     if (!mounted) return;
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
-        builder: (_) => const Scaffold(
-          body: Center(child: Text('Home dashboard goes here next')),
-        ),
+        builder: (_) => const ResidentHomeScreen(),
       ),
     );
   }

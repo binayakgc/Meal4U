@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../theme.dart';
 import 'scan_login_screen.dart';
 import 'staff_login_screen.dart';
+import '../resident/resident_home_screen.dart';
 
 class ResidentLoginScreen extends StatefulWidget {
   const ResidentLoginScreen({super.key});
@@ -22,12 +23,8 @@ class _ResidentLoginScreenState extends State<ResidentLoginScreen> {
   }
 
   void _login() {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (_) => const Scaffold(
-          body: Center(child: Text('Home dashboard goes here next')),
-        ),
-      ),
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(builder: (_) => const ResidentHomeScreen()),
     );
   }
 
